@@ -1,0 +1,19 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:1.23
+    container_name: nginx
+    privileged: true
+    restart: always
+    volumes:
+      - /home/nginx/conf/:/etc/nginx/
+      - /home/nginx/log/:/var/log/nginx/
+      - /home/nginx/www:/www/
+    ports:
+      - 80:80
+    deploy:
+      mode: global
+      resources:
+        limits:
+          memory: 2048M
+
